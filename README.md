@@ -4,9 +4,6 @@
 
 ## :page_facing_up: Table of contents
 
-* [General info](#general-info)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
 * [Setup](#setup)
 
 ## :floppy_disk: Setup
