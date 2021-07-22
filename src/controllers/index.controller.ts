@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { QueryResult } from "pg";
 
-import { pool } from "../database";
 /**
  * This function comment is parsed by doctrine
  * @route GET /users
@@ -9,13 +7,13 @@ import { pool } from "../database";
  * @returns {object} 200 - An array of user info
  * @returns {Error}  default - Unexpected error
  */
+ var list=[{"id":1,"name":"Batman","email":"batman@heroes.com1"},{"id":2,"name":"Superman","email":"superman@heroes.com"}]
 export const getUsers = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
   try {
-    const response: QueryResult = await pool.query("SELECT * from users");
-    return res.status(200).json(response.rows);
+    return res.status(200).json(list);
   } catch (err) {
     console.log(err);
     return res.status(500).json("Internal server error");
@@ -27,19 +25,16 @@ export const getUserById = async (
   res: Response
 ): Promise<Response> => {
   const id = parseInt(req.params.id);
-  const response: QueryResult = await pool.query(
-    "SELECT * FROM users WHERE id = $1",
-    [id]
-  );
-  return res.json(response.rows);
+
+  list.forEach((item) => {
+  if( item.id==id) return res.status(200).json(item);
+});
+  return res.status(200).json({});
 };
 
 export const createUser = async (req: Request, res: Response) => {
   const { name, email } = req.body;
-  const response = await pool.query(
-    "INSERT INTO users (name, email) VALUES ($1, $2)",
-    [name, email]
-  );
+list.push(req.body)
   res.json({
     message: "User Added successfully",
     body: {
@@ -52,15 +47,27 @@ export const updateUser = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const { name, email } = req.body;
 
-  const response = await pool.query(
-    "UPDATE users SET name = $1, email = $2 WHERE id = $3",
-    [name, email, id]
-  );
+
+    list.forEach((item) => {
+    if( item.id==id) return item =req.body;
+  });
   res.json("User Updated Successfully");
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  await pool.query("DELETE FROM users where id = $1", [id]);
+  var count=0
+  var found=-1;
+  list.forEach((item) => {
+    if( item.id==id) found=count;
+    count++
+
+});
+if(found!=-1){
+  list.splice(found, 1);
   res.json(`User ${id} deleted Successfully`);
+}
+else{
+  res.json(`User ${id} not deleted`);
+}
 };

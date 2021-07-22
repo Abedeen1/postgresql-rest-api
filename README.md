@@ -14,12 +14,6 @@
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Code Examples](#code-examples)
-* [Features](#features)
-* [Status](#status)
-* [Inspiration](#inspiration)
-* [Licence](#licence)
-* [Contact](#contact)
 
 ## :books: General info
 
@@ -27,9 +21,6 @@
 * PostgreSQL shell commands: `\l` list all databases. `\c database1` connect to database1. `\dt` inspect tables. `\d users` see detail of table with name users. `\q` to quit.
 * Src (source) folder contains raw code in typescript. Dist (distribution) folder will contain minified/concatenated javascript code for production
 
-## :camera: Screenshots
-
-![screen print](./img/postman.png)
 
 ## :signal_strength: Technologies
 
@@ -46,43 +37,3 @@
 * Run `npm install` to install dependencies
 * Run `npm run dev` to compile app and connect to server `localhost: 3000`
 * Run `npm run build` to compile app
-
-## :computer: Code Examples
-
-* code to fetch a user from the Postgres database using id
-
-```typescript
-export const getUserById = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const id = parseInt(req.params.id);
-  const response: QueryResult = await pool.query(
-    "SELECT * FROM users WHERE id = $1",
-    [id]
-  );
-  return res.json(response.rows);
-};
-```
-
-## :cool: Features
-
-* PostgreSQL access credentials hidden from GitHub in `config` file
-* Postman used to perform CRUD operations on PostgreSQL database
-
-## :clipboard: Status & To-do list
-
-* Status: Fully working basic CRUD app
-* To-do: nothing
-
-## :clap: Inspiration
-
-* [Fazt Code: Youtube tutorial in Spanish: Nodejs, PostgreSQL & Typescript, REST API CRUD](https://www.youtube.com/watch?v=z4BNZfZ1Wq8)
-
-## :file_folder: License
-
-* N/A
-
-## :envelope: Contact
-
-* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
