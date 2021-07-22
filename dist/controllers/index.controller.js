@@ -14,7 +14,7 @@ exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserBy
  * This function comment is parsed by doctrine
  * @route GET /users
  * @group foo - Operations about user
- * @returns {object} 200 - An array of user info
+ * @returns [{{"id":1,"name":"Batman","email":"batman@heroes.com1"}}] 200 - An array of user info
  * @returns {Error}  default - Unexpected error
  */
 var id = 3;
