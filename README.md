@@ -1,4 +1,4 @@
-# :zap: Rest API with Swagger generator
+# :zap: Express JS + NodeJS + Swagger generator
 
 * App using nodejs with express middleware connect to a dummy  database and make Create, Read, Update & Delete (CRUD) operations of user data
 
