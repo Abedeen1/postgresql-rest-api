@@ -23,7 +23,7 @@ let options = {
         securityDefinitions: {}
     },
     basedir: __dirname,
-    files: ['./routes/*.js'] //Path to the API handle folder
+    files: ['./routes/*.js']
 };
 expressSwagger(options);
 const index_1 = __importDefault(require("./routes/index"));

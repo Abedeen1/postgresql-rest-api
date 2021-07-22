@@ -17,6 +17,7 @@ exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserBy
  * @returns {object} 200 - An array of user info
  * @returns {Error}  default - Unexpected error
  */
+var id = 3;
 var list = [{ "id": 1, "name": "Batman", "email": "batman@heroes.com1" }, { "id": 2, "name": "Superman", "email": "superman@heroes.com" }];
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -39,11 +40,15 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getUserById = getUserById;
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email } = req.body;
-    list.push(req.body);
+    var k = req.body;
+    k.id = id;
+    id++;
+    console.log(k);
+    list.push(k);
     res.json({
         message: "User Added successfully",
         body: {
-            user: { name, email },
+            user: k,
         },
     });
 });

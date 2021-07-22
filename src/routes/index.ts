@@ -11,7 +11,7 @@ import {
 router.get('/', function(req, res) {
   res.send('<a href =\"http://localhost:3000/api-docs\"> Swagger</a>')
 });
-/**
+/***
  * This function comment is parsed by doctrine
  * @route GET /users
  * @returns {"id":1,"name":"","email":""} 200 - An array of user info

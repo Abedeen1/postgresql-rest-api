@@ -21,7 +21,7 @@ let options = {
         }
     },
     basedir: __dirname, //app absolute path
-    files: ['./routes/*.js'] //Path to the API handle folder
+    files: ['./routes/*.js']
 };
 expressSwagger(options)
 import indexRoutes from "./routes/index";
